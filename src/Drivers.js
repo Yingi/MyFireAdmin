@@ -57,11 +57,18 @@ export const DriverShow = (props) => (
 export const DriverCreate = (props) => (
   <Create {...props} >
     <SimpleForm>
-      <TextField source="id" />
-      <TextField source="FirstName" />
-      <TextField source="LastName" />
-      <RichTextField source="PhoneNumber" />
-      <RichTextField source="Email" />
+      <TextInput source="id" />
+      <TextInput source="FirstName" />
+      <TextInput source="LastName" />
+      <TextInput source="PhoneNumber" />
+      <TextInput source="Email" />
+      <TextInput source="LicenseNo" />
+      <TextInput source="CarType" />
+      <TextInput source="CarColor" />
+
+      <TextInput source="PlateNumber" />
+
+      
     </SimpleForm>
   </Create>
 );
