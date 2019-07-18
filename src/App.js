@@ -4,19 +4,35 @@ import { DriverList, DriverShow, DriverCreate, DriverEdit } from "./Drivers";
 import { Admin, Resource } from 'react-admin';
 import { Route } from 'react-router-dom'
 import Dashboard from './DashBoard';
+
 import AddDriverClaim from './AddDriverClaim';
 
 import {
+  FirebaseAuthProvider,
   FirebaseRealTimeSaga,
   FirebaseDataProvider
 } from 'react-admin-firebase';
 
-const config = require('./FIREBASE_CONFIG.js').config;
-
-const dataProvider = FirebaseDataProvider(config);
-const options = {
-  observe: ['users', 'drivers']
+const config = {
+    apiKey: "AIzaSyCXZiERpF2DscCApxbRca9Y7UtglIdc-G8",
+    authDomain: "alpharides-f115c.firebaseapp.com",
+    projectId: "alpharides-f115c",
+    databaseURL: "https://alpharides-f115c.firebaseio.com/",
+    storageBucket: "alpharides-f115c.appspot.com",
+    messagingSenderId: "38995523207"
 }
+
+const options = {
+  watch: ['users', 'drivers']
+}
+
+
+const config1 = require('./FIREBASE_CONFIG.js').config;
+
+const authProvider = FirebaseAuthProvider(config, options);
+
+const dataProvider = FirebaseDataProvider(config1, options);
+
 const firebaseRealtime = FirebaseRealTimeSaga(dataProvider, options);
 
 class App extends React.Component {
@@ -25,6 +41,7 @@ class App extends React.Component {
       <Admin
         dashboard={Dashboard}
         customSagas={[firebaseRealtime]}
+        authProvider={authProvider}
         dataProvider={dataProvider}
 
         customRoutes={[
