@@ -4,7 +4,7 @@ import { DriverList, DriverShow, DriverCreate, DriverEdit } from "./Drivers";
 import { Admin, Resource } from 'react-admin';
 import { Route } from 'react-router-dom'
 import Dashboard from './DashBoard';
-
+import DriversCoordinates from './DriversCoordinates';
 import AddDriverClaim from './AddDriverClaim';
 
 import {
@@ -48,6 +48,11 @@ class App extends React.Component {
           <Route
               path="/addDriver"
               component={AddDriverClaim}
+              noLayout
+          />,
+          <Route
+              path="/DriversCoord"
+              component={DriversCoordinates}
               noLayout
           />
       ]}

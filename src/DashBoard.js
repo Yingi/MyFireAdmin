@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import PropTypes from 'prop-types';
+import {Header} from "./components/Header"
 
 import CurrentLocation from './Map';
 
@@ -15,6 +16,8 @@ export class Dashboard extends Component {
         activeMarker: {},
         selectedPlace: {}
     };
+
+    
 
     onMarkerClick = (props, marker, e) =>
         this.setState({
@@ -34,10 +37,15 @@ export class Dashboard extends Component {
 
     render() {
         return (
+        <div>
+            <div>
+            <Header />
+            </div>
             <CurrentLocation
                 centerAroundCurrentLocation
                 google={this.props.google}
             >
+            
                 <Marker
                     onClick={this.onMarkerClick}
                     name={'Driver 1: Doye'}
@@ -59,6 +67,7 @@ export class Dashboard extends Component {
                     </div>
                 </InfoWindow>
             </CurrentLocation>
+        </div>
         );
     }
 }
